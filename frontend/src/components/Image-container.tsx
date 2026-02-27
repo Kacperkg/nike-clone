@@ -9,7 +9,7 @@ export default function ImageContainer() {
   ]
 
   return IMAGESPATHS.map((path, index) => (
-    <Link key={index} to={path.link} className="bg-blue-300 relative overflow-hidden group">
+    <Link key={index} to={path.link} className="bg-blue-300 relative overflow-hidden group hover:scale-98 transition-transform md:rounded-md">
       <img
         src={`/public/${path.src}`}
         alt={path.alt}

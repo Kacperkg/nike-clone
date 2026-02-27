@@ -13,7 +13,7 @@ function App() {
       <div className='relative'>
         <VideoPlayer />
       </div>
-      <div className='grid grid-cols-2 gap-4 w-full px-12 py-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full md:px-12 py-4'>
         <ImageContainer />
       </div>
       <FeaturedProducts />
@@ -24,7 +24,7 @@ function App() {
 
 function VideoPlayer() {
   return (
-    <video autoPlay loop muted className="w-full h-auto object-cover">
+    <video autoPlay loop muted className="w-full h-[80dvh] md:h-auto object-cover">
       <source src="/public/hero.mp4" type="video/mp4"/>
       Your browser does not support the video tag.
     </video>
@@ -45,7 +45,7 @@ function FeaturedProducts() {
     <div className="mx-auto py-8 px-12">
       <h2 className="text-2xl font-bold mb-4">Shop Our Icons</h2>
       {products && (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {products.map((product) => (
             <FeaturedProductCard key={product.id} product={product} />
           ))}
@@ -57,7 +57,7 @@ function FeaturedProducts() {
 
 function FeaturedProductCard({ product }: { product: any }) {
   return (
-    <Link to="/$type/$productId" params={{ type: 'products', productId: product.id }} className="overflow-hidden relative w-full h-auto">
+    <Link to="/$type/$productId" params={{ type: 'products', productId: product.id }} className="overflow-hidden relative w-full h-auto hover:scale-104 transition-transform rounded-md">
       <img src={product.image} alt={product.name} className="object-cover" />
       <div className="absolute bottom-0 left-0 w-full p-4 text-black">
         <h3 className="text-lg font-semibold">{product.name}</h3>

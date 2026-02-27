@@ -56,8 +56,8 @@ export default function Footer() {
 
     return (
         <footer className="py-12 px-12 mt-8">
-            <div className="border-t border-gray-200 py-8 text-center">
-                <ul className="flex text-left justify-between">
+            <div className="border-t border-gray-200 py-8 text-left">
+                <ul className="flex text-left justify-between flex-col md:flex-row gap-8 md:gap-4">
                     {FOOTERLINKS.map((section) => (
                         <li key={section.title}>
                             <h3 className="text-md font-semibold mb-8">{section.title}</h3>
@@ -70,11 +70,12 @@ export default function Footer() {
                             </ul>
                         </li>
                     ))}
-                    <div className="flex gap-2 text-gray-600">
+                    <div className="gap-2 text-gray-600 hidden lg:flex">
                         <Globe/>
                         <h1>United Kingdom</h1>
                     </div>
                 </ul>
+                <p className="text-sm text-gray-500 mt-8">&copy; {new Date().getFullYear()} Nike, Inc. All rights reserved.</p>
             </div>
         </footer>
     )
