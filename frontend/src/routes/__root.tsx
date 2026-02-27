@@ -31,7 +31,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Nike. Just Do It. Clone',
+        title: 'Nike. Just Do It.',
       },
     ],
     links: [
