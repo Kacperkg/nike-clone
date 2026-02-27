@@ -57,7 +57,6 @@ export default function Header() {
           </Link>
 
           <div className="hidden md:flex items-center gap-8 font-semibold text-gray-700">
-            <div>New</div>
             {NAV_CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}
