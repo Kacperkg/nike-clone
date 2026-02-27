@@ -90,6 +90,8 @@ Then go to `http://127.0.0.1:8000/admin/` to add products.
 | `bash bin/dev.sh` | Starts database, backend, and frontend |
 | `bash bin/migrate.sh` | Runs Django makemigrations + migrate |
 | `bash bin/createsuperuser.sh` | Creates a Django admin superuser |
+| `bash bin/seed.sh` | Seeds database with sample products |
+| `bash bin/seed.sh --clear` | Wipes existing products and re-seeds |
 
 ## API Endpoints
 
@@ -103,6 +105,10 @@ Then go to `http://127.0.0.1:8000/admin/` to add products.
 | GET | `/api/products/<id>/` | Single product detail |
 
 Filters can be combined: `/api/products/?category=men&type=shoes&subcategory=running`
+
+## Disclaimer
+
+The seed data (product names, descriptions, prices, and images) is **not guaranteed to be accurate**. Product images in particular may be broken, mismatched, or outdated since they link to external sources that can change at any time. This project is built for learning and portfolio purposes only — it is not affiliated with or endorsed by Nike.
 
 ## Project Structure
 
