@@ -2,7 +2,7 @@
 import { apiUrl } from './api'
 
 export interface Product {
-  id: number
+  id: string
   name: string
   subtitle: string
   description: string
