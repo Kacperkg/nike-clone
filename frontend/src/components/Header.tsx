@@ -58,18 +58,15 @@ export default function Header() {
 
           <div className="hidden md:flex items-center gap-8 font-semibold text-gray-700">
             {NAV_CATEGORIES.map((cat) => (
-              <Link
+              <h1
                 key={cat.slug}
-                to="/$type"
-                params={{ type: 'shoes' }}
-                search={{ category: cat.slug }}
                 className={`cursor-pointer py-4 inline-block border-b-2 ${
                   activeCategory === cat.slug ? 'border-black' : 'border-transparent'
                 }`}
                 onMouseEnter={() => setActiveCategory(cat.slug)}
               >
                 {cat.label}
-              </Link>
+              </h1>
             ))}
           </div>
 
@@ -103,7 +100,7 @@ export default function Header() {
                       <Link
                         to="/$type"
                         params={{ type: section.type }}
-                        search={{ category: activeCategory }}
+                        search={{ category: activeCategory, subcategory: undefined }}
                         onClick={() => setActiveCategory(null)}
                         className="text-sm text-gray-500 hover:text-black whitespace-nowrap"
                       >
@@ -133,7 +130,7 @@ export default function Header() {
                     <Link
                       to="/$type"
                       params={{ type: 'accessories' }}
-                      search={{ category: activeCategory }}
+                      search={{ category: activeCategory, subcategory: undefined }}
                       onClick={() => setActiveCategory(null)}
                       className="text-sm text-gray-500 hover:text-black whitespace-nowrap"
                     >
@@ -158,7 +155,7 @@ export default function Header() {
                       key={section.type}
                       to="/$type"
                       params={{ type: section.type }}
-                      search={{ category: cat.slug }}
+                      search={{ category: cat.slug, subcategory: undefined }}
                       onClick={() => setIsOpen(false)}
                       className="block text-sm text-gray-500 py-1 pl-2"
                     >

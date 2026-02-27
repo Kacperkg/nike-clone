@@ -34,13 +34,15 @@ function VideoPlayer() {
 
 
 function FeaturedProducts() {
-  const { data: products, isLoading, error } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['products', 'featured'],
     queryFn: () => fetchProducts({ featured: true }),
   })
 
   if (isLoading) return <p>Loading...</p>
   if (error) return <p>Error loading products</p>
+
+  const products = data?.results
 
   return (
     <div className="mx-auto py-8 px-12">

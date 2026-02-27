@@ -45,6 +45,7 @@ function CategoryPage() {
             type={type}
             category={category}
             subcategory={subcategory}
+            subhead={subHead}
           />
         </section>
       </div>
