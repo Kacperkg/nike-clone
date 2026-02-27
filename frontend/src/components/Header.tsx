@@ -48,8 +48,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative bg-white border-b border-gray-200" onMouseLeave={() => setActiveCategory(null)}>
-        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <header className="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50" onMouseLeave={() => setActiveCategory(null)}>
+        <nav className="px-12 w-full mx-auto flex items-center justify-between h-16 ">
           <Link to="/" className="text-black">
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="80" height="80" fill="none">
               <path fill="currentColor" fillRule="evenodd" d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z" clipRule="evenodd" />
