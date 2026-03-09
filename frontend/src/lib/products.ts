@@ -28,6 +28,7 @@ export async function fetchProducts(params?: {
   subcategory?: string
   featured?: boolean
   page?: number
+  limit?: number
 }) {
   const searchParams = new URLSearchParams()
   if (params?.category) searchParams.set('category', params.category)
@@ -35,6 +36,7 @@ export async function fetchProducts(params?: {
   if (params?.subcategory) searchParams.set('subcategory', params.subcategory)
   if (params?.featured) searchParams.set('featured', 'true')
   if (params?.page) searchParams.set('page', params.page.toString())
+  if (params?.limit) searchParams.set('limit', params.limit.toString())
 
   const res = await fetch(apiUrl(`/api/products/?${searchParams.toString()}`))
   if (!res.ok) throw new Error('Failed to fetch products')

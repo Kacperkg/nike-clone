@@ -2,6 +2,7 @@ import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
+  useLocation,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
@@ -16,6 +17,7 @@ import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 import Footer from '@/components/Footer'
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -46,6 +48,9 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  
   return (
     <html lang="en">
       <head>
@@ -54,8 +59,20 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <TanStackQueryProvider>
           <Header />
-          {children}
-          <Footer/>
+          <LayoutGroup>
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.div
+                key={location.pathname}
+                initial={false}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0 }}
+                style={{ position: 'relative' }}
+              >
+                {children}
+              </motion.div>
+            </AnimatePresence>
+          </LayoutGroup>
+          <Footer />
           <TanStackDevtools
             config={{
               position: 'bottom-right',

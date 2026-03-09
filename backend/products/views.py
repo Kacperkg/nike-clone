@@ -21,6 +21,16 @@ class ProductListView(generics.ListAPIView):
         featured = self.request.query_params.get("featured")
         if featured == "true":
             queryset = queryset.filter(is_featured=True)
+
+
+                # Max number of results
+        limit = self.request.query_params.get("limit")
+        if limit:
+            try:
+                queryset = queryset[:int(limit)]
+            except ValueError:
+                pass
+
         return queryset
 
 

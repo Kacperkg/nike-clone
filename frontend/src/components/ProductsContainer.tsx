@@ -17,6 +17,8 @@ export default function ProductsContainer({type, category, subcategory, subhead}
         initialPageParam: 1,
         getNextPageParam: (lastPage, _allPages, lastPageParam) =>
             lastPage.next ? lastPageParam + 1 : undefined,
+
+        staleTime: 5 * 60 * 1000,
     })
 
     const sentinelRef = useRef<HTMLDivElement>(null)
@@ -36,7 +38,7 @@ export default function ProductsContainer({type, category, subcategory, subhead}
 
         observer.observe(el)
         return () => observer.disconnect()
-    }, [hasNextPage, isFetchingNextPage, fetchNextPage])
+    }, [hasNextPage, isFetchingNextPage, fetchNextPage, type, category, subcategory])
 
     if (isLoading) return <p>Loading...</p>
     if (error) return <p>Error loading products</p>
