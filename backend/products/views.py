@@ -22,8 +22,31 @@ class ProductListView(generics.ListAPIView):
         if featured == "true":
             queryset = queryset.filter(is_featured=True)
 
+        # Price range
+        price_min = self.request.query_params.get("price_min")
+        if price_min:
+            try:
+                queryset = queryset.filter(price__gte=float(price_min))
+            except ValueError:
+                pass
+        price_max = self.request.query_params.get("price_max")
+        if price_max:
+            try:
+                queryset = queryset.filter(price__lte=float(price_max))
+            except ValueError:
+                pass
 
-                # Max number of results
+        # Sorting
+        sort_by = self.request.query_params.get("sort_by")
+        sort_map = {
+            "price_asc": "price",
+            "price_desc": "-price",
+            "newest": "-created_at",
+        }
+        if sort_by in sort_map:
+            queryset = queryset.order_by(sort_map[sort_by])
+
+        # Max number of results
         limit = self.request.query_params.get("limit")
         if limit:
             try:

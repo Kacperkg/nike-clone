@@ -27,7 +27,7 @@ function ProductDetailPage() {
   if (error) return <p>Error loading product</p>
 
   return (
-    <div className="min-h-screen mt-20 grid-cols-2 grid">
+    <div className="min-h-screen mt-20 lg:mt-35 flex flex-col lg:grid lg:grid-cols-2">
       <ProductImage product={product} productId={productId} />
 
       {product && <ProductInfo product={product} type={type} />}

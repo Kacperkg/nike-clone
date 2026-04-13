@@ -21,7 +21,7 @@ export default function Recommended({ product }: { product: Product }) {
   if (similar.length === 0) return null
 
   return (
-    <section className="col-span-2 px-12 py-16">
+    <section className="lg:col-span-2 px-6 md:px-12 py-12 md:py-16">
       <h2 className="text-2xl font-bold mb-8">You Might Also Like</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {similar.map((p) => (

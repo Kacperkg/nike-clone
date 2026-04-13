@@ -8,11 +8,17 @@ export default function ProductsContainer({
   category,
   subcategory,
   subhead,
+  price_min,
+  price_max,
+  sort_by,
 }: {
   type?: string
   category?: string
   subcategory?: string
   subhead?: string
+  price_min?: number
+  price_max?: number
+  sort_by?: string
 }) {
   const {
     data,
@@ -22,9 +28,9 @@ export default function ProductsContainer({
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ['products', type, category, subcategory],
+    queryKey: ['products', type, category, subcategory, price_min, price_max, sort_by],
     queryFn: ({ pageParam }) =>
-      fetchProducts({ type, category, subcategory, page: pageParam }),
+      fetchProducts({ type, category, subcategory, page: pageParam, price_min, price_max, sort_by }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, _allPages, lastPageParam) =>
       lastPage.next ? lastPageParam + 1 : undefined,
@@ -56,6 +62,9 @@ export default function ProductsContainer({
     type,
     category,
     subcategory,
+    price_min,
+    price_max,
+    sort_by,
   ])
 
   if (isLoading)
